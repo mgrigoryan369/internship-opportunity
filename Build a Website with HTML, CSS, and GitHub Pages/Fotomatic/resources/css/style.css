@@ -15,7 +15,7 @@ html {
 }
 
 .button {
-  border-radius: 4px;
+  border-radius: 0.25rem;
   background-color: #4a4a4a;
   color: white;
 }
@@ -26,6 +26,14 @@ html {
 
 .image-container img {
   display: block;
+}
+
+/* Typography - adding the variable font Roboto Mono */
+.roboto-mono-regular {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 @media only screen and (max-width: 760px) {
@@ -41,6 +49,7 @@ header {
   width: 100%;
   border-bottom: solid 1px #c6c1c1;
   background-color: white;
+  z-index: 5;
 }
 
 header .content {
@@ -51,6 +60,8 @@ header .content {
 
 header .logo {
   flex: 1;
+  font-size: 1.5rem;
+  color: #4A4A4A;
 }
 
 header nav ul {
@@ -117,19 +128,27 @@ header .mobile {
   justify-content: flex-start;
   align-items: flex-start;
   height: 43.5rem;
+  background-image: url("/resources/images/banner-landingpage.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
 }
 
 #sign-up-cta {
-  padding: 0 5rem 2.5rem 5rem;
+  padding: 0 5rem 3.5rem 5rem;
   border: solid 1px #979797;
-  border-radius: 4px;
-  background-color: #9dc20b;
+  border-radius: .25rem;
+  background-color: #9dc20a;
+  position: relative;
+  top: 10.625rem;
+  left: 6.25rem;
 }
 
 #sign-up-cta .content {
   width: 25.625rem;
   margin-top: 2rem;
   font-family: "Roboto", sans-serif;
+  font-weight: 400;
   font-size: 1.25rem;
   line-height: 1.4;
   color: white;
@@ -157,8 +176,13 @@ header .mobile {
 }
 
 #sign-up-cta .button {
-  margin-top: 1.625rem;
-  padding: 1.25rem 7.25rem;
+  margin: 1.625rem auto 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 25.5rem;
+  min-height: 4rem;
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 760px) {
