@@ -139,3 +139,86 @@ nav a {
     margin-top: 10px;
 }
 
+/* Locations Section 
+======================================*/
+#locations {
+    min-height: 500px;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    background-image: url("../images/img-locations-background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#locations h2 {
+    background: none;
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+#locations h3 {
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+#locations .location p {
+    padding: 20px 0;
+    font-size: 1.35rem;
+}
+
+#locations .location p:nth-last-child(1) {
+    margin-bottom: 10px;
+}
+
+#locations .locations-wrapper {
+    display: flex;
+    opacity: 1!important;
+    background: none;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#locations .locations-wrapper .location {
+    width: 300px;
+    opacity: 1!important;
+    margin: 15px 20px;
+}
+
+/* Contact Section 
+======================================*/
+#contact {
+    min-height: 200px;
+}
+
+#contact h2 {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+#contact h5 {
+    margin: 3rem 0;
+    font-weight: bold;
+    font-size: 1.325rem;
+}
+
+#contact .tel {
+    font-weight: bold;
+    font-size: 1.325rem;
+}
+
+/* Footer Section 
+======================================*/
+footer .copyright {
+    text-align: left;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+}
