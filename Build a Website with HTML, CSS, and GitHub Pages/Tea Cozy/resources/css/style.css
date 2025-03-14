@@ -16,7 +16,13 @@
     text-align: var(--alignment);
     opacity: var(--opacity);
 }
-  
+
+main {
+    position: relative;
+    top: 69px;
+}
+
+
 /* Header 
 ======================================*/
 header {
@@ -66,5 +72,70 @@ nav a {
     text-decoration: underline;
 }
 
+/* Mission - Hero Section 
+======================================*/
+#mission {
+    position: relative;
+    height: 700px;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    background-image: url("../images/img-mission-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
+#mission .hero-message {
+    width: 100%;
+    padding: 1rem;
+}
+
+#mission .hero-message h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#mission .hero-message h4 {
+    font-weight: bold;
+}
+
+/* Featured Teas Section 
+======================================*/
+#features {
+    padding: 5rem 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#features .featured-teas {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 2rem;
+    column-gap: 2rem;
+}
+
+#features h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#features h4 {
+    font-weight: bold;
+}
+
+#features .featured-teas-single img {
+    height: 200px;
+    width: 300px;
+}
+
+#features .featured-teas-single h4 {
+    font-weight: bold;
+    margin-top: 10px;
+}
 
