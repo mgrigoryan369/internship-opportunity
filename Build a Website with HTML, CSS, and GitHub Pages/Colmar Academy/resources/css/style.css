@@ -1,0 +1,48 @@
+/* Universal Styles 
+======================================*/
+.balance-text {
+    text-wrap: balance;
+}
+
+/* Header 
+======================================*/
+.mobile-nav {
+    display:none;
+}
+
+/* Hero Section 
+======================================*/
+
+
+/* Program Section 
+======================================*/
+
+
+/* Learn Section 
+======================================*/
+
+
+/* Thesis Section 
+======================================*/
+
+
+/* Footer
+======================================*/
+
+
+/* Media Queries
+========================================
+======================================*/
+
+/* Mobile 768px */
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+
+}
+
+@media only screen and (max-width: 480px) {
+
+}
