@@ -1,14 +1,71 @@
 /* Universal Styles 
 ======================================*/
+html {
+    font-family: "Poppins", sans-serif;
+}
+
 .balance-text {
     text-wrap: balance;
 }
 
 /* Header 
 ======================================*/
-.mobile-nav {
-    display:none;
+header {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 4rem;
+    z-index: 2;
 }
+
+header .nav-bar-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.logo-wrapper {
+    flex-grow: 1;
+    display: inline-flex;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    max-height: 2rem;
+}
+
+.logo img {
+    height: 45px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #9e9e9e;
+}
+
+.logo-text strong {
+    font-weight: bold;
+    color: #474747;
+}
+
+.desktop-nav ul {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.desktop-nav ul li {
+    padding: 0 0.5rem;
+}
+
+.mobile-nav {
+    display: none;
+}
+
 
 /* Hero Section 
 ======================================*/
