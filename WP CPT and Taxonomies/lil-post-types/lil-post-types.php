@@ -12,4 +12,12 @@
  * Domain Path: /languages
  */
 
- 
+// Prevent direct access
+if (!defined('WPINC')){
+    exit;
+}
+
+//Define version, domain, and path
+define('LIL_VERSION', '1.0.0');
+define('LILDOMAIN', 'lil-post-types');
+define('LILPATH', plugin_dir_path(__FILE__));
