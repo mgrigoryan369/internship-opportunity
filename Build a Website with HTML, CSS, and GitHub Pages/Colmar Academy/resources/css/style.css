@@ -8,10 +8,30 @@ html {
     text-wrap: balance;
 }
 
+main {
+    position: relative;
+    top: 4rem;
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p, span {
+    color: #434343;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+p {
+    font-family: "Nunito Sans", sans-serif;
+}
+
 /* Header 
 ======================================*/
 header {
     position: fixed;
+    background-color: #FFF;
     display: flex;
     align-items: center;
     width: 100%;
@@ -56,10 +76,20 @@ header .nav-bar-wrapper {
 .desktop-nav ul {
     display: flex;
     flex-wrap: nowrap;
+    font-family: "Nunito Sans", sans-serif;
 }
 
 .desktop-nav ul li {
     padding: 0 0.5rem;
+}
+
+.desktop-nav ul li a {
+    transition: opacity ease .3s;
+}
+
+
+.desktop-nav ul li a:hover {
+    opacity: 0.75;
 }
 
 .mobile-nav {
@@ -69,11 +99,152 @@ header .nav-bar-wrapper {
 
 /* Hero Section 
 ======================================*/
+#hero {
+    padding: 2rem 0;
+    background: lightgray;
+    position: relative;
+}
 
+#hero .hero-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+#hero .hero-left-wrapper {
+    width: 60%;
+    margin: 0 1.5rem;
+}
+
+#hero .hero-left-wrapper img {
+    width: 100%;
+}
+
+#hero .hero-right-wrapper {
+    width: 40%;
+}
+
+#hero .hero-message-wrapper {
+    max-width: 450px;
+    padding: 0 1.5rem;
+}
+
+#hero .hero-wrapper h1 {
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+#hero .hero-wrapper p {
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin-bottom: 2.2rem;
+}
+
+#hero a.button {
+    display: flex;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    justify-content: center;;
+    padding: .5rem 0;
+    background-color: #434343;
+    color: #FFF;
+    transition: background-color ease .3s;
+    max-width: 90%;
+}
+
+#hero a.button:hover {
+    background-color: #676767;
+}
 
 /* Program Section 
 ======================================*/
+#program {
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
 
+#program .program-main-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+#program .program-left-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 0 1.5rem;
+}
+
+#program .program-left-wrapper img {
+    width: 100%;
+}
+
+#program .program-left-wrapper h2 {
+    margin-top: 2rem;
+}
+
+#program .program-left-wrapper p {
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+#program .program-left-wrapper .quote-author {
+    color: #292929;
+    font-weight: 500;
+}
+
+#program .program-right-wrapper {
+    width: 40%;
+}
+
+#program .program-single {
+    display: flex;
+    padding: 1rem;
+    transition: background-color .3s ease;
+}
+
+#program .program-single img {
+    width: 35%;
+    height: auto;
+    object-fit: cover;
+}
+
+#program .program-single .program-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 65%;
+    padding: 0 1.5rem;
+}
+
+#program .program-single .program-contents h3 {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+#program .program-single .program-contents p {
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+#program .program-contents a {
+    color: hsl(212, 67%, 55%);
+    font-weight: 500;
+    transition: color ease .3s;
+}
+
+#program .program-contents a:hover {
+    color: hsl(212, 67%, 45%);
+}
+
+#program .program-single:hover {
+    background-color: lightgray;
+}
 
 /* Learn Section 
 ======================================*/
