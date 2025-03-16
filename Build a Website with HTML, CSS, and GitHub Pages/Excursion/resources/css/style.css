@@ -1,0 +1,43 @@
+body {
+    background: black;
+    font-family: "Verdana", sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: white;
+    margin: 3rem 0;
+}
+
+a {
+    color: Aquamarine;
+    font-size: 16px;
+}
+
+p {
+    color: gray;
+    font-size: 21px;
+}
+
+#video-sec h1 {
+    font-size: 50px;
+    font-weight: 400;
+}
+
+#image-sec h2, #download-sec h3 {
+    font-weight: 300;
+    font-size: 42px;
+}
+
+#image-sec img {
+    margin-bottom: 24px;
+}
+
+.footer-wrapper {
+    text-align: right;
+    padding: 0 24px;
+    font-size: 1.5rem;
+    color: gray;
+}
+
