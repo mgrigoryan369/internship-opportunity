@@ -43,6 +43,15 @@
 			)
 		);
 		?>
+    <section class="related-events">
+        <h3><?php esc_html_e('Upcoming Events', 'twentynineteen'); ?></h3>
+        <?php 
+        if (function_exists('lil_show_events')) {
+            lil_show_events();
+        } else {
+        echo '<p>' . esc_html__('No upcoming events at this time.', 'twentynineteen') . '</p>';
+        } ?>
+    </section>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
