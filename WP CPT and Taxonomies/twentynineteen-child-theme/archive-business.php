@@ -18,9 +18,7 @@ get_header();
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-				?>
+				<h1 class="page-title"><?php _e('All Businesses', 'twentynineteen'); ?></h1>
 			</header><!-- .page-header -->
 
 			<?php
@@ -34,7 +32,7 @@ get_header();
 				 * called content-___.php (where ___ is the Post Format name) and that
 				 * will be used instead.
 				 */
-				get_template_part( 'template-parts/content/content', 'excerpt' );
+				get_template_part( 'template-parts/content/content-excerpt', 'business' );
 
 				// End the loop.
 			endwhile;

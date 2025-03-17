@@ -21,10 +21,9 @@
 		?>
 	</header><!-- .entry-header -->
 
-	<?php twentynineteen_post_thumbnail(); ?>
-
 	<div class="entry-content">
-		<?php the_excerpt(); ?>
+        <?php the_post_thumbnail('large'); ?>
+        <?php the_excerpt(); ?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
