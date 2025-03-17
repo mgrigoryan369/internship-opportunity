@@ -18,7 +18,7 @@ function lil_register_business_type() {
         'labels' => $labels,
         'public' => true,
         'has_archive' => 'businesses',
-        'rewrite' => array('has_front' => true),
+        'rewrite' => array('with_front' => true),
         'menu_icon' => 'dashicons-building',
         'supports' => array('title', 'editor', 'thumbnail'),
         'show_in_rest' => true,
@@ -34,14 +34,14 @@ function lil_register_event_type(){
         'singular_name' => __('Event', LILDOMAIN),
         'archives' => __('All Events', LILDOMAIN),
         'add_new' => __('Add New Event', LILDOMAIN),
-        'add_new_item' => ('Add New Event', LILDOMAIN),
+        'add_new_item' => __('Add New Event', LILDOMAIN),
     );
 
     $args = array(
         'labels' => $labels,
         'public' => true,
         'has_archive' => 'events',
-        'rewrite' => array('has_front' => true),
+        'rewrite' => array('with_front' => true),
         'menu_icon' => 'dashicons-megaphone',
         'supports' => array('title', 'editor', 'thumbnail'),
         'show_in_rest' => true,

@@ -21,7 +21,7 @@ function lil_register_size_taxonomy(){
     register_taxonomy('size', $post_types, $args);
 }
 
-// Location Custom Taxonomy for Business Post Type
+// Location Custom Taxonomy for Business & Event Post Types
 function lil_register_location_taxonomy(){
     $labels = array(
         'name' => __('Locations', LILDOMAIN),
@@ -36,10 +36,10 @@ function lil_register_location_taxonomy(){
         'show_in_quick_edit' => true,
         'show_in_rest' => true,
         'hierarchical' => true,
-        'rewrite' => array('hierarchical' => true, 'has_front' => true),
+        'rewrite' => array('hierarchical' => true, 'with_front' => true),
     );
 
-    $post_types = array('business');
+    $post_types = array('business', 'event');
 
     register_taxonomy('location', $post_types, $args);
 }
