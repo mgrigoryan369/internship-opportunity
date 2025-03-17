@@ -15,6 +15,7 @@ $discussion = ! is_page() && twentynineteen_can_show_post_thumbnail() ? twentyni
 if ( ! is_page() ) :
 	?>
 <div class="entry-meta">
+    <?php echo get_the_term_list(get_the_ID(), 'size', '<b>Size:</b> ', ', ', ''); ?>
 	<?php
 		// Edit post link.
 		edit_post_link(

@@ -27,6 +27,7 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
+        <p class="taxonomy-sizes"><?php echo get_the_term_list(get_the_ID(), 'size', 'Size: ', ', ', ''); ?></p>
 		<?php twentynineteen_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
