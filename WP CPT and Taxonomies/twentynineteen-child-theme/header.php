@@ -49,7 +49,13 @@
 					}
 					?>
 					<div class="<?php echo $classes; ?>">
-						<?php get_template_part( 'template-parts/header/entry', 'header' ); ?>
+						<?php 
+                            if (get_post_type == 'business') {
+                                get_template_part( 'template-parts/header/entry-header', 'business' );
+                            } else {
+                                get_template_part( 'template-parts/header/entry', 'header' ); 
+                            }
+                        ?>
 					</div><!-- .entry-header -->
 					<?php rewind_posts(); ?>
 				</div>

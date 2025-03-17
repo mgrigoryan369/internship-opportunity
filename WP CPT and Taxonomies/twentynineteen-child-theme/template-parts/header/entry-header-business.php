@@ -15,16 +15,6 @@ $discussion = ! is_page() && twentynineteen_can_show_post_thumbnail() ? twentyni
 if ( ! is_page() ) :
 	?>
 <div class="entry-meta">
-	<?php twentynineteen_posted_by(); ?>
-	<?php twentynineteen_posted_on(); ?>
-	<span class="comment-count">
-		<?php
-		if ( ! empty( $discussion ) ) {
-			twentynineteen_discussion_avatars_list( $discussion->authors );
-		}
-		?>
-		<?php twentynineteen_comment_count(); ?>
-	</span>
 	<?php
 		// Edit post link.
 		edit_post_link(
