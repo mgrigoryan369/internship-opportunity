@@ -1,5 +1,7 @@
 <?php
 
+require_once(get_stylesheet_directory() . '/lil-post-types/lil-post-types.php');
+
 //Enqueue Styles Parent & Child
 function lil_child_enqueue_styles() {
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
@@ -43,3 +45,10 @@ function lil_show_events(){
 
     wp_reset_postdata();
 }
+
+function lil_rewrite_flush() {
+    lil_register_everything();
+    flush_rewrite_rules();
+}
+
+add_action('after_switch_theme', 'lil_rewrite_flush');

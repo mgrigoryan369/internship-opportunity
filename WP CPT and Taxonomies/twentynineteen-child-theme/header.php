@@ -50,7 +50,7 @@
 					?>
 					<div class="<?php echo $classes; ?>">
 						<?php 
-                            if (get_post_type == 'business') {
+                            if (get_post_type() == 'business') {
                                 get_template_part( 'template-parts/header/entry-header', 'business' );
                             } else {
                                 get_template_part( 'template-parts/header/entry', 'header' ); 
