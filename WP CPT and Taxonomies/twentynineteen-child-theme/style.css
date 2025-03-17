@@ -8,3 +8,40 @@ Template: twentynineteen
 Version: 1.0.0
 */
 
+/*Events Loop*/
+.related-events {
+    background: #f7f5f5;
+    border: 1px solid #d9d9d9;
+    padding: 50px;
+    border-radius: 15px;
+}
+
+ul.events-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul.events-list li {
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: 15px;
+    padding-bottom: 25px;
+}
+
+ul.events-list li:nth-last-child {
+    border-bottom: 0;
+}
+
+ul.events-list li a {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+ul.events-list li p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+ul.events-list li p strong {
+    display: block;
+}
