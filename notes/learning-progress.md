@@ -7,6 +7,8 @@
 - **Build a Website with HTML, CSS, and GitHub Pages** on Codecademy
 - **Using Gravity Forms in WordPress** on LinkedIn Learning
 - **WordPress: Custom Post Types & Taxonomies** on LinkedIn Learning
+- **WordPress: WP-CLI** on LinkedIn Learning
+- **PHP for WordPress** on LinkedIn Learning
 
 ## 📂 Repository Updates
 
@@ -14,8 +16,9 @@
 
 ## ⏳ In-progress
 
-- **PHP for WP** on LinkedIn Learning
-- **WP Plugin Development** on LinkedIn Learning
+- **WP: Actions & Filter Hooks** on LinkedIn Learning
+- **WP: Advanced Custom Fields** on LinkedIn Learning
+- **WP: Plugin Development** on LinkedIn Learning
 
 ### 📌 Current Task List
 
