@@ -23,3 +23,14 @@ with this program. If not, visit: https://www.gnu.org/licenses/
 
 */
 
+function myplugin_action_hook_example() {
+    wp_mail('email@example.com', 'Subject', 'Message...');
+}
+add_action('init', 'myplugin_action_hook_example');
+
+function myplugin_filter_hook_example($content){
+    $content = $content . '<p>This custom content will be attached to the_content...</p>';
+
+    return $content;
+}
+add_filter('the_content', 'myplugin_filter_hook_example');
