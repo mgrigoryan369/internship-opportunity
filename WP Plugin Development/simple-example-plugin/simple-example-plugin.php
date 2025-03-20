@@ -23,6 +23,11 @@ with this program. If not, visit: https://www.gnu.org/licenses/
 
 */
 
+/* Using wp_mail as a visual confirmation temporarily,
+perhaps create a specific function to to handle this using the error_log() function
+maybe it is part of the course, holding off on it.
+*/
+
 function myplugin_action_hook_example() {
     wp_mail('email@example.com', 'Subject', 'Message...');
 }
@@ -63,3 +68,23 @@ function myplugin_on_uninstall(){
     delete_option('myplugin_show_welcome_page', true);
 }
 register_uninstall_hook(__FILE__, 'myplugin_on_uninstall');
+
+/* Customize pluggable logout function with a hook, can also bring in the entire function here to
+make even more changes, but that would not be ideal as core updates won't reflect */
+function myplugin_custom_logout() {
+    wp_mail('email@example.com', 'Logout Triggered' , 'Looks like somone just logged out!');
+}
+add_action('wp_logout', 'myplugin_custom_logout');
+
+//Validation example
+function is_phone_number($phone_number){
+    if(empty($phone_number)){
+        return false;
+    }
+
+    if (! preg_match("/^\(?([0-9[{3})\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})$/", $phone_number)){ 
+        return false;
+    }
+
+    return true;
+}
