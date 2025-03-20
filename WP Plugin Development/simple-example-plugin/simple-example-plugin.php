@@ -34,3 +34,32 @@ function myplugin_filter_hook_example($content){
     return $content;
 }
 add_filter('the_content', 'myplugin_filter_hook_example');
+
+function myplugin_on_activation(){
+    if(!current_user_can('activate_plugins')){
+        return;
+    }
+    wp_mail('email@example.com', 'Plugin Activated', 'Options added to DB');
+    add_option('myplugin_posts_per_page', 10);
+    add_option('myplugin_show_welcome_page', true);
+}
+register_activation_hook(__FILE__, 'myplugin_on_activation');
+
+function myplugin_on_deactivation(){
+    if(!current_user_can('activate_plugins')){
+        return;
+    }
+    wp_mail('email@example.com', 'Plugin Deactivated', 'Rewrite rules flushed');
+    flush_rewrite_rules();
+}
+register_deactivation_hook(__FILE__, 'myplugin_on_deactivation');
+
+function myplugin_on_uninstall(){
+    if(!current_user_can('activate_plugins')){
+        return;
+    }
+    wp_mail('email@example.com', 'Plugin Uninstalled', 'Options deleted from DB');
+    delete_option('myplugin_posts_per_page', 10);
+    delete_option('myplugin_show_welcome_page', true);
+}
+register_uninstall_hook(__FILE__, 'myplugin_on_uninstall');
