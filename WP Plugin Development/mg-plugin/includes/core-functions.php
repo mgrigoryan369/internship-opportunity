@@ -35,7 +35,7 @@ function mg_plugin_custom_login_title( $title ) {
 	return $title;
 	
 }
-add_filter( 'login_headertitle', 'mg_plugin_custom_login_title' );
+add_filter( 'login_headertext', 'mg_plugin_custom_login_title' );
 
 // custom login styles
 function mg_plugin_custom_login_styles() {
