@@ -26,6 +26,9 @@ if (is_admin()) {
     require_once plugin_dir_path(__FILE__) . 'admin/settings-validate.php';
 }
 
+// include dependencies: admin & public
+require_once plugin_dir_path(__FILE__) . 'includes/core-functions.php';
+
 // default plugin options
 function mg_plugin_options_default() {
 
