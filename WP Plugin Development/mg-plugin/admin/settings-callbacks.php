@@ -5,13 +5,6 @@ if (!defined('ABSPATH')){
     exit;
 }
 
-// validate plugin settings
-function mg_plugin_callback_validate_options($input) {
-    // todo: add validation functionality
-
-    return $input;
-}
-
 // callback: login section
 function mg_plugin_callback_section_login() {
 	
