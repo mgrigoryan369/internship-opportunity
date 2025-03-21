@@ -25,5 +25,16 @@ if (is_admin()) {
     require_once plugin_dir_path(__FILE__) . 'admin/settings-callbacks.php';
 }
 
+// default plugin options
+function mg_plugin_options_default() {
 
-
+	return array(
+		'custom_url'     => 'https://wordpress.org/',
+		'custom_title'   => 'Powered by WordPress',
+		'custom_style'   => 'disable',
+		'custom_message' => '<p class="custom-message">My custom message</p>',
+		'custom_footer'  => 'Special message for users',
+		'custom_toolbar' => false,
+		'custom_scheme'  => 'default',
+	);
+}
