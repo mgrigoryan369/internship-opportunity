@@ -50,3 +50,13 @@ function mg_plugin_options_default() {
 		'custom_scheme'  => 'default',
 	);
 }
+
+// remove options on uninstall
+function mg_plugin_on_uninstall() {
+
+	if ( ! current_user_can( 'activate_plugins' ) ) return;
+
+	delete_option( 'mg_plugin_options' );
+
+}
+//register_uninstall_hook( __FILE__, 'mg_plugin_on_uninstall' );
