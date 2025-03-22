@@ -36,14 +36,14 @@ function mg_plugin_register_settings() {
 	
 	add_settings_section( 
 		'mg_plugin_section_login', 
-		'Customize Login Page', 
+		esc_html__('Customize Login Page', 'mg-plugin'), 
 		'mg_plugin_callback_section_login', 
 		'mg_plugin'
 	);
 	
 	add_settings_section( 
 		'mg_plugin_section_admin', 
-		'Customize Admin Area', 
+		esc_html__('Customize Admin Area', 'mg-plugin'), 
 		'mg_plugin_callback_section_admin', 
 		'mg_plugin'
 	);
@@ -63,65 +63,65 @@ function mg_plugin_register_settings() {
 
 	add_settings_field(
 		'custom_url',
-		'Custom URL',
+		esc_html__('Custom URL', 'mg-plugin'),
 		'mg_plugin_callback_field_text',
 		'mg_plugin',
 		'mg_plugin_section_login',
-		[ 'id' => 'custom_url', 'label' => 'Custom URL for the login logo link' ]
+		[ 'id' => 'custom_url', 'label' => esc_html__('Custom URL for the login logo link', 'mg-plugin') ]
 	);
 
 	add_settings_field(
 		'custom_title',
-		'Custom Title',
+		esc_html__('Custom Title', 'mg-plugin'),
 		'mg_plugin_callback_field_text',
 		'mg_plugin',
 		'mg_plugin_section_login',
-		[ 'id' => 'custom_title', 'label' => 'Custom title attribute for the logo link' ]
+		[ 'id' => 'custom_title', 'label' => esc_html__('Custom title attribute for the logo link', 'mg-plugin') ]
 	);
 
 	add_settings_field(
 		'custom_style',
-		'Custom Style',
+		esc_html__('Custom Style', 'mg-plugin'),
 		'mg_plugin_callback_field_radio',
 		'mg_plugin',
 		'mg_plugin_section_login',
-		[ 'id' => 'custom_style', 'label' => 'Custom CSS for the Login screen' ]
+		[ 'id' => 'custom_style', 'label' => esc_html__('Custom CSS for the Login screen', 'mg-plugin') ]
 	);
 
 	add_settings_field(
 		'custom_message',
-		'Custom Message',
+		esc_html__('Custom Message', 'mg-plugin'),
 		'mg_plugin_callback_field_textarea',
 		'mg_plugin',
 		'mg_plugin_section_login',
-		[ 'id' => 'custom_message', 'label' => 'Custom text and/or markup' ]
+		[ 'id' => 'custom_message', 'label' => esc_html__('Custom text and/or markup', 'mg-plugin') ]
 	);
 
 	add_settings_field(
 		'custom_footer',
-		'Custom Footer',
+		esc_html__('Custom Footer', 'mg-plugin'),
 		'mg_plugin_callback_field_text',
 		'mg_plugin',
 		'mg_plugin_section_admin',
-		[ 'id' => 'custom_footer', 'label' => 'Custom footer text' ]
+		[ 'id' => 'custom_footer', 'label' => esc_html__('Custom footer text', 'mg-plugin') ]
 	);
 
 	add_settings_field(
 		'custom_toolbar',
-		'Custom Toolbar',
+		esc_html__('Custom Toolbar', 'mg-plugin'),
 		'mg_plugin_callback_field_checkbox',
 		'mg_plugin',
 		'mg_plugin_section_admin',
-		[ 'id' => 'custom_toolbar', 'label' => 'Remove new post and comment links from the Toolbar' ]
+		[ 'id' => 'custom_toolbar', 'label' => esc_html__('Remove new post and comment links from the Toolbar', 'mg-plugin') ]
 	);
 
 	add_settings_field(
 		'custom_scheme',
-		'Custom Scheme',
+		esc_html__('Custom Scheme', 'mg-plugin'),
 		'mg_plugin_callback_field_select',
 		'mg_plugin',
 		'mg_plugin_section_admin',
-		[ 'id' => 'custom_scheme', 'label' => 'Default color scheme for new users' ]
+		[ 'id' => 'custom_scheme', 'label' => esc_html__('Default color scheme for new users', 'mg-plugin') ]
 	);
 
 

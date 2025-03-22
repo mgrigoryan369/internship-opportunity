@@ -8,14 +8,14 @@ if (!defined('ABSPATH')){
 // callback: login section
 function mg_plugin_callback_section_login() {
 	
-	echo '<p>These settings enable you to customize the WP Login screen.</p>';
+	echo '<p>' . esc_html__('These settings enable you to customize the WP Login screen.', 'mg-plugin') . '</p>';
 	
 }
 
 // callback: admin section
 function mg_plugin_callback_section_admin() {
 	
-	echo '<p>These settings enable you to customize the WP Admin Area.</p>';
+	echo '<p>' . esc_html__('These settings enable you to customize the WP Admin Area.', 'mg-plugin') . '</p>';
 	
 }
 
@@ -51,8 +51,8 @@ function mg_plugin_callback_field_radio( $args ) {
 	
 	$radio_options = array(
 		
-		'enable'  => 'Enable custom styles',
-		'disable' => 'Disable custom styles'
+		'enable'  => esc_html__('Enable custom styles', 'mg-plugin'),
+		'disable' => esc_html__('Disable custom styles', 'mg-plugin')
 		
 	);
 	
@@ -112,14 +112,14 @@ function mg_plugin_callback_field_select( $args ) {
 	
 	$select_options = array(
 		
-		'default'   => 'Default',
-		'light'     => 'Light',
-		'blue'      => 'Blue',
-		'coffee'    => 'Coffee',
-		'ectoplasm' => 'Ectoplasm',
-		'midnight'  => 'Midnight',
-		'ocean'     => 'Ocean',
-		'sunrise'   => 'Sunrise',
+		'default'   => esc_html__('Default',    'mg-plugin'),
+		'light'     => esc_html__('Light',      'mg-plugin'),
+		'blue'      => esc_html__('Blue',       'mg-plugin'),
+		'coffee'    => esc_html__('Coffee',     'mg-plugin'),
+		'ectoplasm' => esc_html__('Ectoplasm',  'mg-plugin'),
+		'midnight'  => esc_html__('Midnight',   'mg-plugin'),
+		'ocean'     => esc_html__('Ocean',      'mg-plugin'),
+		'sunrise'   => esc_html__('Sunrise',    'mg-plugin'),
 		
 	);
 	

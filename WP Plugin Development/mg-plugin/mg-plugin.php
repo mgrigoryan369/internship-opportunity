@@ -16,6 +16,14 @@ if (!defined('ABSPATH')){
     exit;
 }
 
+// load text domain
+function mg_plugin_load_textdomain() {
+	
+	load_plugin_textdomain( 'mg-plugin', false, plugin_dir_path( __FILE__ ) . 'languages/' );
+	
+}
+add_action( 'plugins_loaded', 'mg_plugin_load_textdomain' );
+
 // if admin area
 if (is_admin()) {
     // Include dependencies
@@ -34,10 +42,10 @@ function mg_plugin_options_default() {
 
 	return array(
 		'custom_url'     => 'https://wordpress.org/',
-		'custom_title'   => 'Powered by WordPress',
+		'custom_title'   => esc_html__('Powered by WordPress', 'mg-plugin'),
 		'custom_style'   => 'disable',
-		'custom_message' => '<p class="custom-message">My custom message</p>',
-		'custom_footer'  => 'Special message for users',
+		'custom_message' => '<p class="custom-message">' . esc_html__('My custom message', 'mg-plugin') . '</p>',
+		'custom_footer'  => esc_html__('Special message for users', 'mg-plugin'),
 		'custom_toolbar' => false,
 		'custom_scheme'  => 'default',
 	);

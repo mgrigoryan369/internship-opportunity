@@ -21,8 +21,8 @@ function mg_add_toplevel_menu() {
 	*/
 	
 	add_menu_page(
-		'MG Plugin Settings',
-		'MG Plugin',
+		esc_html__('MG Plugin Settings', 'mg-plugin'),
+		esc_html__('MG Plugin', 'mg-plugin'),
 		'manage_options',
 		'mg_plugin',
 		'mg_display_settings_page',
@@ -52,8 +52,8 @@ function mg_add_sublevel_menu() {
 	
 	add_submenu_page(
 		'options-general.php',
-		'MG Plugin Settings',
-		'MG Plugin',
+		esc_html__('MG Plugin Settings', 'mg-plugin'),
+		esc_html__('MG Plugin', 'mg-plugin'),
 		'manage_options',
 		'mg_plugin',
 		'mg_display_settings_page'
