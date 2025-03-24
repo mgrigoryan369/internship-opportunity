@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// custom loop shortcode: [get_posts posts_per_page="" orderby=""]
+// custom loop shortcode: [get_posts post_type="name1,name2,name3" posts_per_page="" orderby=""]
 function custom_loop_shortcode_get_posts($atts){
 
     // get global post variable
@@ -22,19 +22,31 @@ function custom_loop_shortcode_get_posts($atts){
     extract(shortcode_atts( array(
         'posts_per_page' => 5,
         'orderby' => 'date',
+        'post_type' => 'post',
     ), $atts));
 
     // define get_post parameters 
     $args = array(
         'posts_per_page' => $posts_per_page, 
         'orderby' => $orderby,
+        'post_type' => strpos( $post_type, ',' ) !== false
+                       ? array_map( 'trim', explode( ',', $post_type ) )
+                       : $post_type,
     );
 
     // get the posts
     $posts = get_posts($args);
 
     // begin output variable
-    $output = '<h3>Custom Loop: get_posts()</h3>';
+    $output = '<h3>Custom Loop: get_posts(';
+
+    if ( is_array( $args['post_type'] ) ) {
+        $output .= implode( ', ', $args['post_type'] );
+    } else {
+        $output .= $args['post_type'];
+    }
+    
+    $output .= ')</h3>';
     $output .= '<ul>';
 
     // loop 
