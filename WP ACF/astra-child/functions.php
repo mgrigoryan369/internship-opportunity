@@ -25,7 +25,34 @@ function set_featured_image_from_profile_picture($post_id) {
     }
 }
 
+// Fun facts Gutenberg Block
+function lil_define_block(){
+    if (function_exists('acf_register_block')){
+        acf_register_block(array(
+            'name' => 'fun-facts',
+            'title' => __('Fun Facts'),
+            'description' => __('A custom fun facts block'),
+            'render_callback' => 'lil_render_fun_facts_block',
+            'category' => 'layout',
+            'icon' => 'nametag',
+            'keywords' => array('fun', 'facts', 'profiles', 'acf'),
+        ));
+    }
+}
+
+// Define for simplification
+define('LIL_PATH', trailingslashit(get_stylesheet_directory()));
+
+// Fun facts render callback
+function lil_render_fun_facts_block($block){
+    $slug = str_replace('acf/', '', $block['name']);
+    
+    if (file_exists(LIL_PATH . "template-parts/block/content-{$slug}.php")){
+        include_once(LIL_PATH . "template-parts/block/content-{$slug}.php");
+    }
+}
 
 // Actions
 add_action('wp_enqueue_scripts', 'astra_child_styles'); // Load Styles
 add_action('acf/save_post', 'set_featured_image_from_profile_picture', 20); // Set featured image
+add_action('acf/init', 'lil_define_block'); //add Fun Facts block
