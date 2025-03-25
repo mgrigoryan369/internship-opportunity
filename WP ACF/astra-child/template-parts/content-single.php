@@ -31,6 +31,9 @@
 	<?php astra_entry_content_single(); ?>
 
     <?php 
+
+        // Display: Location, Profile Description & Friends - custom fields
+
         if(get_field('location')){
             echo '<p class="location">Location: ' . get_field('location') . "</p>";
         }
@@ -57,6 +60,7 @@
 
         wp_reset_postdata();
         echo '</ul>';
+
 	?>
 
 	<?php astra_entry_bottom(); ?>
