@@ -45,3 +45,35 @@ ul.profile-friends li {
     margin: 10px;
     width: 30%;
 }
+
+.profile-friends-title {
+    margin-top: 30px;
+}
+
+.resume-section {
+    border-bottom: 1px solid #cfcfcf;
+    margin-top: 30px;
+}
+
+.resume-section h4 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.resume section .date {
+    float: right;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: .75;
+}
+
+.resume-section .description {
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.resume section .simple-description {
+    margin: 5px 0;
+    font-size: 1.25rem;
+}

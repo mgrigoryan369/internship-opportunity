@@ -1,21 +1,12 @@
 <?php
-/**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package Astra
- * @since 1.0.0
- */
+// Template Name: User Profile
 
+ // Disable direct file access
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+acf_form_head();
 
 get_header(); ?>
 
@@ -27,11 +18,41 @@ get_header(); ?>
 
 	<div id="primary" <?php astra_primary_class(); ?>>
 
-		<?php astra_primary_content_top(); ?>
+        <article
+            <?php
+                    echo wp_kses_post(
+                        astra_attr(
+                            'article-page',
+                            array(
+                                'id'    => 'post-' . get_the_id(),
+                                'class' => join( ' ', get_post_class() ),
+                            )
+                        )
+                    );
+                    ?>
+            >
+                <?php astra_entry_top(); ?>
 
-		<?php astra_content_page_loop(); ?>
+                <?php astra_entry_content_single_page(); ?>
 
-		<?php astra_primary_content_bottom(); ?>
+                <?php
+                    
+                    acf_form(array(
+                        'post_id'		=> 'new_post',
+                        'post_title'	=> true,
+                        'post_content'	=> true,
+                        'new_post'		=> array(
+                            'post_type'		=> 'post',
+                            'post_status'	=> 'draft',
+                            'post_category' => array( 3 ),
+                        ),
+                    ));
+                    
+                    ?>
+
+                <?php astra_entry_bottom(); ?>
+
+        </article><!-- #post-## -->
 
 	</div><!-- #primary -->
 
