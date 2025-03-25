@@ -28,11 +28,13 @@
 
 	<?php astra_entry_top(); ?>
 
+    <?php echo get_the_post_thumbnail(); ?>
+
 	<?php astra_entry_content_single(); ?>
 
     <?php 
 
-        // Display: Location, Profile Description & Friends - custom fields
+        // Display: Location, Profile Description, Resume & Friends - custom fields
 
         if(get_field('location')){
             echo '<p class="location">Location: ' . get_field('location') . "</p>";
@@ -40,6 +42,35 @@
 
         if(get_field('profile_description')){
             the_field('profile_description');
+        }
+
+        if(have_rows('resume')){
+            echo '<div class="resume">';
+            $resume_format = '<section class="resume-section">
+            <h4><span class="date">%1$s</span> <span class="title">%2$s</span></h4>
+            <div class="description">%3$s</div>
+            <div class="long-description">%4$s</div>
+            </section>';
+    
+        while(have_rows('resume')){
+            the_row();
+            $title = get_sub_field('title');
+            $simple_description = get_sub_field('simple_description');
+            $start_date = get_sub_field('start_date');
+            $end_date = get_sub_field('end_date');
+            $full_description = get_sub_field('full_description');
+    
+            $dates = ($end_date) ? $start_date . '-' . $end_date : $start_date;
+            printf($resume_format,
+                $dates,
+                $title,
+                $simple_description,
+                $full_description	
+        );
+        }
+    
+        echo '</div>';
+    
         }
 
         $friends = get_field('friends');
