@@ -9,6 +9,7 @@
 - **WordPress: Custom Post Types & Taxonomies** on LinkedIn Learning
 - **WordPress: WP-CLI** on LinkedIn Learning
 - **PHP for WordPress** on LinkedIn Learning
+- **WordPress: Advanced Custom Fields** on LinkedIn Learning
 
 ## 📂 Repository Updates
 
@@ -17,10 +18,27 @@
 ## ⏳ In-progress
 
 - **WP: Actions & Filter Hooks** on LinkedIn Learning
-- **WP: Advanced Custom Fields** on LinkedIn Learning
 - **WP: Plugin Development** on LinkedIn Learning
 
 ### 📌 Current Task List
+
+**LinkedIn Learning: WP Plugin Dev Course plugins**
+
+- [ ] Custom WP Query
+- [ ] Widget
+- [ ] User roles (create/delete/update)
+- [ ] Enqueue
+- [ ] Options API
+- [ ] Custom post type
+- [ ] Custom taxonomy
+- [ ] Custom fields
+- [ ] Meta box
+- [ ] DB query
+- [ ] Custom loops
+- [ ] Get/Post request
+- [ ] Cron
+- [ ] Ajax
+- [ ] REST create/read
 
 - [x] Launch temp domain
 - [x] Export/import local-built forms

@@ -18,3 +18,4 @@ Detailed progress is tracked in `notes/learning-progress.md`.
 For exercises that require a live site (e.g., API integrations or live forms).
 
 [Live Demo](https://marting157.sg-host.com/)
+[Live Demo](https://marting159.sg-host.com/) LinkedIn Learning ACF Course
