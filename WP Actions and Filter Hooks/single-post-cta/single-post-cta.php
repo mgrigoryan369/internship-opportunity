@@ -19,10 +19,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // load stylesheet
 function spc_load_stylesheet() {
-    if(is_single()){
-        wp_enqueue_style('spc-stylesheet', plugin_dir_url(__FILE__) . 'spc-styles.css');
+    if ( apply_filters( 'spc_load_styles', true ) ) {
+        if(is_single()){
+            wp_enqueue_style('spc-stylesheet', plugin_dir_url(__FILE__) . 'spc-styles.css');
+        }
     }
 }
+
+// filter in-case don't need to laod the stylesheet
+//add_filter('spc_load_styles', __return_false);
 
 // hook stylesheet
 add_action('wp_enqueue_scripts', 'spc_load_stylesheet');
