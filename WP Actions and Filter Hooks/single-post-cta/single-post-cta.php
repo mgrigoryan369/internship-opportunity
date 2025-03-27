@@ -42,3 +42,14 @@ function spc_register_sidebar() {
 
 // hook sidebar
 add_action( 'widgets_init', 'spc_register_sidebar' );
+
+// display sidebar on single posts
+function spc_display_sidebar( $content ) {
+	if ( is_single() ) {
+		dynamic_sidebar( 'spc-sidebar' );
+	}
+	return $content;
+}
+
+// add dynamic sidebar
+add_filter( 'the_content', 'spc_display_sidebar' );
