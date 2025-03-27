@@ -10,6 +10,7 @@
 - **WordPress: WP-CLI** on LinkedIn Learning
 - **PHP for WordPress** on LinkedIn Learning
 - **WordPress: Advanced Custom Fields** on LinkedIn Learning
+- **WP: Actions & Filter Hooks** on LinkedIn Learning
 
 ## 📂 Repository Updates
 
@@ -17,7 +18,6 @@
 
 ## ⏳ In-progress
 
-- **WP: Actions & Filter Hooks** on LinkedIn Learning
 - **WP: Plugin Development** on LinkedIn Learning
 
 ### 📌 Current Task List
