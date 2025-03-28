@@ -66,7 +66,7 @@ class Clean_Markup_Widget extends WP_Widget {
         ?>
         <p>
             <label for="<?php echo esc_attr($for); ?>"><?php echo esc_html($label); ?></label>
-            <textarea class="widefat" id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>"><?php esc_textarea($markup); ?></textarea>
+            <textarea class="widefat" id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($name); ?>"><?php echo esc_textarea($markup); ?></textarea>
         </p>
     
     <?php }
