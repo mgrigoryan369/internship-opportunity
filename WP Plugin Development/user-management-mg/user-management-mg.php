@@ -122,8 +122,22 @@ function mgum_page_update_user() {
 }
 
 function mgum_page_delete_user() {
-	// todo: Add delete user form display
-	echo '<div class="wrap"><h1>Delete User</h1></div>';
+	if (!current_user_can('manage_options')) return;
+	?>
+	<div class="wrap">
+		<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+		<form method="post">
+			<h3><?php esc_html_e('Delete User', 'user-management-mg'); ?></h3>
+			<p>
+				<label for="email"><?php esc_html_e('Enter the user&rsquo;s email (required)', 'user-management-mg'); ?></label><br />
+				<input class="regular-text" type="text" size="40" name="email" id="email">
+			</p>
+
+			<input type="hidden" name="mgum_delete_nonce" value="<?php echo wp_create_nonce('mgum_delete_nonce'); ?>">
+			<input type="submit" class="button button-primary" value="<?php esc_html_e('Delete User', 'user-management-mg'); ?>">
+		</form>
+	</div>
+	<?php
 }
 
 // Form handlers — used to process form submissions
@@ -201,7 +215,29 @@ function mgum_handle_update_user() {
 // Delete User
 add_action( 'admin_init', 'mgum_handle_delete_user' );
 function mgum_handle_delete_user() {
-	// todo: Process delete user form POST data
+	if (isset($_POST['mgum_delete_nonce']) && wp_verify_nonce($_POST['mgum_delete_nonce'], 'mgum_delete_nonce')) {
+		if (!current_user_can('manage_options') ) wp_die();
+
+		$email = isset($_POST['email']) ? sanitize_email( $_POST['email']) : '';
+		$result = '';
+
+		if ($email) {
+			$user_id = email_exists($email);
+
+			if (is_numeric($user_id)) {
+				$deleted = wp_delete_user($user_id);
+				$result = $deleted ? __('The user has been deleted.', 'user-management-mg') : __('Error: user not deleted.', 'user-management-mg');
+			} else {
+				$result = __('Error: user not found.', 'user-management-mg');
+			}
+		} else {
+			$result = __('Email is required.', 'user-management-mg');
+		}
+
+		$redirect = admin_url('admin.php?page=mgum-delete-user&result=' . urlencode( $result ));
+		wp_redirect($redirect);
+		exit;
+	}
 }
 
 // Admin notices — used to display result messages
@@ -227,6 +263,17 @@ function mgum_admin_notices() {
 	
 		if (is_numeric($result)) {
 			echo '<div class="notice notice-success is-dismissible"><p><strong>' . esc_html__('User updated successfully.', 'user-management-mg') . '</strong></p></div>';
+		} else {
+			echo '<div class="notice notice-warning is-dismissible"><p><strong>' . esc_html($result) . '</strong></p></div>';
+		}
+	}
+
+	// Deleting User - admin msg
+	if ('user-management_page_mgum-delete-user' === $screen->id && isset($_GET['result'])) {
+		$result = sanitize_text_field($_GET['result']);
+	
+		if (strpos($result, 'deleted') !== false) {
+			echo '<div class="notice notice-success is-dismissible"><p><strong>' . esc_html($result) . '</strong></p></div>';
 		} else {
 			echo '<div class="notice notice-warning is-dismissible"><p><strong>' . esc_html($result) . '</strong></p></div>';
 		}
