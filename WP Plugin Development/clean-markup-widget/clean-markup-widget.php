@@ -14,12 +14,15 @@ class Clean_Markup_Widget extends WP_Widget {
 	// set up widget
 	public function __construct() {
 		
+        $id = 'clean_markup_widget';
+        $title = esc_html__('Clean Markup Widget', 'custom-widget');
+        
 		$options = array( 
-			'classname' => 'my_widget',
-			'description' => 'My Widget is awesome',
+			'classname' => 'clean-markup-widget',
+			'description' => esc_html__('Allow markup display within this widget', 'custom-widget'),
 		);
 		
-		parent::__construct( 'my_widget', 'My Widget', $options );
+		parent::__construct( $id, $title, $options );
 		
 	}
 	
