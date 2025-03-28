@@ -30,6 +30,11 @@ class Clean_Markup_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 		
 		// outputs the content of the widget
+        $markup = '';
+
+        if (isset($instance['markup'])){
+            echo wp_kses_post($instance['markup']);
+        }
 		
 	}
 	
