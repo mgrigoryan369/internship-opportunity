@@ -22,3 +22,14 @@ function mg_plugin_enqueue_style_admin_page($hook){
     }
 }
 
+// enqueue admin stylesheet on specific page type
+add_action('admin_enqueue_scripts', 'mg_plugin_enqueue_style_admin_pages');
+
+function mg_plugin_enqueue_style_admin_pages($hook){
+
+    if ('edit.php' === $hook) {
+		$src = plugin_dir_url(__FILE__) .'admin/css/example-admin.css';
+
+        wp_enqueue_style('mg-plugin-admin-pages', $src, array(), null, 'all');
+	}
+}
