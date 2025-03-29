@@ -55,3 +55,24 @@ function mg_plugin_enqueue_jquery_public(){
 
     wp_enqueue_script('mg-plugin-public', $src, array('jquery'), '1.0');
 }
+
+// enqueue login style
+add_action( 'login_enqueue_scripts', 'mg_plugin_enqueue_style_login' );
+
+function mg_plugin_enqueue_style_login() {
+
+	$src = plugin_dir_url( __FILE__ ) .'admin/css/example-admin.css';
+
+	wp_enqueue_style('mg-plugin-login', $src, array(), null, 'all' );
+}
+
+// enqueue login script
+add_action( 'login_enqueue_scripts', 'mg_plugin_enqueue_script_login' );
+
+function mg_plugin_enqueue_script_login() {
+
+	$src = plugin_dir_url( __FILE__ ) .'admin/js/example-admin.js';
+
+	wp_enqueue_script( 'mg-plugin-login', $src, array('jquery'), null, false );
+}
+
