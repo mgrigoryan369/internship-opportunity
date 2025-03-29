@@ -48,9 +48,39 @@ function mg_plugin_add_custom_post_type_testimonial() {
 		'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
     );
 
-	register_post_type('testimonial', $args );
+	register_post_type('testimonial', $args);
 
 }
 
-// Hook into init & fire the function 
-add_action( 'init', 'mg_plugin_add_custom_post_type_testimonial' );
+// Hook into init & fire the function for the Custom Post Type
+add_action( 'init', 'mg_plugin_add_custom_post_type_testimonial');
+
+
+// Add custom 'Rating' taxonomy to the 'Testimonial' CPT
+function mg_plugin_add_custom_taxonomy_rating() {
+
+    $args = array(
+		'labels' => array(
+			'name' => 'Ratings',
+			'singular_name' => 'Rating',
+			'search_items' => 'Search Ratings',
+			'all_items' => 'All Ratings',
+			'edit_item' => 'Edit Rating',
+			'update_item' => 'Update Rating',
+			'add_new_item' => 'Add New Rating',
+			'new_item_name' => 'New Rating Name',
+			'menu_name' => 'Rating',
+		),
+		'hierarchical' => false,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'show_in_rest' => true,
+	);
+
+	register_taxonomy('rating', 'testimonial', $args);
+
+}
+
+// Hook into init & fire the function for the Custom Taxonomy
+add_action('init', 'mg_plugin_add_custom_taxonomy_rating');
