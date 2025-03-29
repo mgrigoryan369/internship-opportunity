@@ -7,6 +7,11 @@ Author:      Martin Grigoryan
 Version:     1.0.0
 */
 
+// exit if file is called directly
+if (!defined('ABSPATH')){
+    exit;
+}
+
 
 // enqueue admin stylesheet on specific page
 add_action('admin_enqueue_scripts', 'mg_plugin_enqueue_style_admin_page');
@@ -61,18 +66,39 @@ add_action( 'login_enqueue_scripts', 'mg_plugin_enqueue_style_login' );
 
 function mg_plugin_enqueue_style_login() {
 
-	$src = plugin_dir_url( __FILE__ ) .'admin/css/example-admin.css';
+	$src = plugin_dir_url(__FILE__) . 'admin/css/example-admin.css';
 
-	wp_enqueue_style('mg-plugin-login', $src, array(), null, 'all' );
+	wp_enqueue_style('mg-plugin-login', $src, array(), null, 'all');
 }
 
 // enqueue login script
-add_action( 'login_enqueue_scripts', 'mg_plugin_enqueue_script_login' );
+add_action('login_enqueue_scripts', 'mg_plugin_enqueue_script_login');
 
 function mg_plugin_enqueue_script_login() {
 
-	$src = plugin_dir_url( __FILE__ ) .'admin/js/example-admin.js';
+	$src = plugin_dir_url(__FILE__) . 'admin/js/example-admin.js';
 
-	wp_enqueue_script( 'mg-plugin-login', $src, array('jquery'), null, false );
+	wp_enqueue_script('mg-plugin-login', $src, array('jquery'), null, false);
+}
+
+// enqueue public style
+add_action('wp_enqueue_scripts', 'mg_plugin_enqueue_style_public');
+
+function mg_plugin_enqueue_style_public() {
+
+	$src = plugin_dir_url(__FILE__) . 'public/css/example-public.css';
+
+	wp_enqueue_style('mg-plugin-public-css', $src, array(), null, 'all');
+}
+
+// enqueue public script
+add_action('wp_enqueue_scripts', 'mg_plugin_enqueue_script_public');
+
+function mg_plugin_enqueue_script_public() {
+
+	$src = plugin_dir_url(__FILE__) . 'public/js/example-public.js';
+
+	wp_enqueue_script('mg-plugin-public-js', $src, array('jquery'), null, false);
+
 }
 
