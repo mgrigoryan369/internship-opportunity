@@ -99,6 +99,36 @@ function mg_plugin_enqueue_script_public() {
 	$src = plugin_dir_url(__FILE__) . 'public/js/example-public.js';
 
 	wp_enqueue_script('mg-plugin-public-js', $src, array('jquery'), null, false);
-
 }
 
+// enqueue public inline style
+add_action('wp_enqueue_scripts', 'mg_plugin_inline_style_public');
+
+function mg_plugin_inline_style_public() {
+
+	// enqueue CSS file
+	$src = plugin_dir_url(__FILE__) . 'public/css/example-public.css';
+
+	wp_enqueue_style('mg-plugin-public-inline', $src, array(), null, 'all');
+
+	// add inline CSS
+	$css = 'body {background-color: #dbe7eb!important;}';
+
+	wp_add_inline_style('mg-plugin-public-inline', $css);
+}
+
+// enqueue public inline script
+add_action('wp_enqueue_scripts', 'mg_plugin_inline_script_public');
+
+function mg_plugin_inline_script_public() {
+
+	// enqueue JS file
+	$src = plugin_dir_url(__FILE__) . 'public/js/example-public.js';
+
+	wp_enqueue_script('mg-plugin-public-js', $src, array('jquery'), null, false);
+
+	// add inline JavaScript
+	$js = 'console.log("This is from the inline JS injection")';
+
+	wp_add_inline_script( 'mg-plugin-public-js', $js );
+}
