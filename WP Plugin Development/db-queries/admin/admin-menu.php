@@ -41,5 +41,10 @@ function mg_db_queries_render_page() {
 	require_once MG_DBQ_PLUGIN_PATH . 'includes/select-row.php';
 	mg_dbq_get_primary_admin_user();
 
+    echo '<h2>Select a column</h2>';
+
+	require_once MG_DBQ_PLUGIN_PATH . 'includes/select-col.php';
+	mg_dbq_get_all_user_ids();
+
 	echo '</div>';
 }
