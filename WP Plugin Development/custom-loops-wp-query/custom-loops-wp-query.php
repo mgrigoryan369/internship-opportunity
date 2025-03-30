@@ -4,7 +4,7 @@ Plugin Name: Custom Loops: WP_Query
 Description: Demonstrates how to customize the WordPress Loop using WP_Query.
 Plugin URI:  https://github.com/mgrigoryan369
 Author:      Martin Grigoryan
-Version:     1.0
+Version:     1.0.1
 Text Domain: myplugin
 */
 
@@ -28,16 +28,28 @@ function custom_loop_shortcode_wp_query($atts) {
 		'orderby' => 'date',
 	), $atts );
 
-	// get current page from custom query var
 	$current_page = get_query_var( 'wpq_page' ) ? intval( get_query_var( 'wpq_page' ) ) : 1;
-
-	// define query parameters
-	$args = array(
-		'posts_per_page' => intval( $atts['posts_per_page'] ),
-		'orderby' => sanitize_text_field( $atts['orderby'] ),
-		'paged' => $current_page,
-	);
 	
+	// create unique key using page + atts
+	$atts_hash = md5( serialize( $atts ) );
+	$transient_key = 'mg_plugin_wp_query_args_' . $current_page . '_' . $atts_hash;
+	
+	// try to get args from transient 
+	$args = get_transient( $transient_key );
+
+	if ( $args === false ) {
+
+		// define query parameters
+		$args = array(
+			'posts_per_page' => intval( $atts['posts_per_page'] ),
+			'orderby' => sanitize_text_field( $atts['orderby'] ),
+			'paged' => $current_page,
+		);
+		
+		// set transient to cache results for 12 hours
+		set_transient( $transient_key, $args, 12 * HOUR_IN_SECONDS );
+	}
+
 	// query the posts
 	$posts = new WP_Query( $args );
 	
@@ -86,3 +98,24 @@ function custom_loop_shortcode_wp_query($atts) {
 }
 // register shortcode function
 add_shortcode( 'wp_query_example', 'custom_loop_shortcode_wp_query' );
+
+
+// delete transient on plugin deactivation
+function custom_loop_shortcode_wp_query_on_deactivation() {
+	if( ! current_user_can( 'activate_plugins' ) ){
+		return;
+	}
+
+	global $wpdb;
+
+	// delete all transients that start with 'mg_plugin_wp_query_args_'
+	$transient_prefix = '_transient_mg_plugin_wp_query_args_';
+
+	$wpdb->query(
+		$wpdb->prepare(
+			"DELETE FROM $wpdb->options WHERE option_name LIKE %s",
+			$wpdb->esc_like( $transient_prefix ) . '%'
+		)
+	);
+}
+register_deactivation_hook( __FILE__ , 'custom_loop_shortcode_wp_query_on_deactivation' );
