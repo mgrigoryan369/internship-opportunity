@@ -46,5 +46,10 @@ function mg_db_queries_render_page() {
 	require_once MG_DBQ_PLUGIN_PATH . 'includes/select-col.php';
 	mg_dbq_get_all_user_ids();
 
+    echo '<h2>Select generic results</h2>';
+
+	require_once MG_DBQ_PLUGIN_PATH . 'includes/select-results.php';
+	mg_dbq_get_draft_posts();
+
 	echo '</div>';
 }

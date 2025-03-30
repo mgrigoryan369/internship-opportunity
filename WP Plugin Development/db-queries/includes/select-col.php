@@ -1,4 +1,4 @@
-<?php // Select Var 
+<?php // Select Column 
 
 // Exit if file is called directly
 if (!defined('ABSPATH')) {
