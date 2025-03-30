@@ -30,7 +30,11 @@ function mg_db_queries_render_page() {
 	echo '<h1>' . esc_html(get_admin_page_title()) . '</h1>';
 	echo '<p>' . esc_html__('This plugin demo shows ways to query the database.', 'db-queries') . '</p>';
 
-	// Include query examples below
+	echo '<h2>Select a variable example</h2>';
+
+	require_once MG_DBQ_PLUGIN_PATH . 'includes/select-var.php';
+	mg_dbq_get_user_count();
+	mg_dbq_sum_custom_meta();
 
 	echo '</div>';
 }
