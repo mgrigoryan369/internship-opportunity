@@ -19,3 +19,18 @@ function mg_db_queries_add_menu() {
 		80
 	);
 }
+
+// Render the admin page
+function mg_db_queries_render_page() {
+	if (!current_user_can('manage_options')) {
+		return;
+	}
+
+	echo '<div class="wrap">';
+	echo '<h1>' . esc_html(get_admin_page_title()) . '</h1>';
+	echo '<p>' . esc_html__('This plugin demo shows ways to query the database.', 'db-queries') . '</p>';
+
+	// Include query examples below
+
+	echo '</div>';
+}
