@@ -36,5 +36,10 @@ function mg_db_queries_render_page() {
 	mg_dbq_get_user_count();
 	mg_dbq_sum_custom_meta();
 
+    echo '<h2>Select a row</h2>';
+
+	require_once MG_DBQ_PLUGIN_PATH . 'includes/select-row.php';
+	mg_dbq_get_primary_admin_user();
+
 	echo '</div>';
 }
