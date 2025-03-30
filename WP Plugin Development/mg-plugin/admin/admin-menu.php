@@ -31,7 +31,7 @@ function mg_add_toplevel_menu() {
 	);
 	
 }
-//add_action( 'admin_menu', 'mg_add_toplevel_menu' );
+add_action( 'admin_menu', 'mg_add_toplevel_menu' );
 
 
 // add sub-level administrative menu
@@ -60,4 +60,4 @@ function mg_add_sublevel_menu() {
 	);
 	
 }
-add_action( 'admin_menu', 'mg_add_sublevel_menu' );
+// add_action( 'admin_menu', 'mg_add_sublevel_menu' );
