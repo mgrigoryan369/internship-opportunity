@@ -71,7 +71,32 @@ add_action( 'wp_ajax_public_hook', 'ajax_public_handler' );
 add_action( 'wp_ajax_nopriv_public_hook', 'ajax_public_handler' );
 
 
-// display markup
+// Joke Handler 
+function ajax_public_get_joke_handler() {
+	check_ajax_referer( 'ajax_public', 'nonce' );
+
+	$response = wp_remote_get( 'https://icanhazdadjoke.com/', array(
+		'headers' => array( 'Accept' => 'application/json' ),
+	) );
+
+	if ( is_wp_error( $response ) ) {
+		wp_send_json_error( 'Unable to fetch joke.' );
+	}
+
+	$body = wp_remote_retrieve_body( $response );
+	$data = json_decode( $body );
+
+	if ( isset( $data->joke ) ) {
+		wp_send_json_success( $data->joke );
+	} else {
+		wp_send_json_error( 'No joke found.' );
+	}
+}
+add_action( 'wp_ajax_get_random_joke', 'ajax_public_get_joke_handler' );
+add_action( 'wp_ajax_nopriv_get_random_joke', 'ajax_public_get_joke_handler' );
+
+
+// Display markup
 function ajax_public_display_markup( $content ) {
 
 	if ( ! is_single() ) return $content;
@@ -82,7 +107,11 @@ function ajax_public_display_markup( $content ) {
     $markup  = '<p class="ajax-learn-more">';
 	$markup .= '<a href="'. $url .'" data-id="'. $id .'">';
 	$markup .= 'Learn more about the author</a></p>';
-	$markup .= '<div class="ajax-response"><em>Loading author info…</em></div>';
+	$markup .= '<div class="ajax-response"></div>';
+
+    // Joke Markup
+    $markup .= '<hr><p><button class="ajax-joke-button">Tell me a joke</button></p>';
+    $markup .= '<div class="ajax-joke-response"></div>';
 
 	return $content . $markup;
 

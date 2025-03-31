@@ -36,6 +36,25 @@
 			});
 			
 		});
+
+        // When user clicks the Joke Button
+        $('.ajax-joke-button').on('click', function(e) {
+            e.preventDefault();
+        
+            const $jokeBox = $('.ajax-joke-response');
+            $jokeBox.html('Fetching a joke...');
+        
+            $.post(ajax_public.ajaxurl, {
+                nonce: ajax_public.nonce,
+                action: 'get_random_joke'
+            }, function(response) {
+                if (response.success) {
+                    $jokeBox.html('<p>' + response.data + '</p>');
+                } else {
+                    $jokeBox.html('<p>' + response.data + '</p>');
+                }
+            });
+        });
 		
 	});
 	
