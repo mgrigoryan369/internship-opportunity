@@ -36,6 +36,24 @@
 			});
 			
 		});
+
+        // Joke button click
+        $('#get-joke-btn').on('click', function() {
+            $('#joke-response').html('Loading a joke...');
+
+            $.get('https://official-joke-api.appspot.com/jokes/random', function(data) {
+                if (data && data.setup && data.punchline) {
+                    $('#joke-response').html(
+                        '<strong>' + data.setup + '</strong><br>' +
+                        '<em>' + data.punchline + '</em>'
+                    );
+                } else {
+                    $('#joke-response').html('No joke found.');
+                }
+            }).fail(function() {
+                $('#joke-response').html('Failed to load a joke. Try again.');
+            });
+        });
 		
 	});
 	

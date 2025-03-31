@@ -99,11 +99,19 @@ function ajax_admin_display_form() {
 
 	<div class="ajax-form-wrap">
 
+        <!-- Header Checker Form -->
 		<form class="ajax-form" method="post">
 			<p><label for="url">Enter any valid URL:</label></p>
 			<p><input id="url" name="url" type="text" class="regular-text"></p>
 			<input type="submit" value="Check Headers" class="button button-primary">
 		</form>
+
+        <!-- Joke Generator -->
+        <div class="joke-box" style="margin-top:20px;">
+            <p><strong>Feeling curious?</strong> Click below to get a random joke:</p>
+            <button type="button" class="button" id="get-joke-btn">Tell Me a Joke</button>
+            <div id="joke-response" style="margin-top:10px;"></div>
+        </div>
 
 		<div class="examples">
 			<p>Examples:</p>
