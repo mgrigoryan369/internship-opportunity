@@ -1,0 +1,9 @@
+/* Admin Styles */
+
+/* Tabs */
+.aaio-tab-content {
+	padding: 20px;
+	background: #fff;
+	border: 1px solid #ccd0d4;
+	border-top: none;
+}
