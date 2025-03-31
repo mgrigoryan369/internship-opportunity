@@ -88,6 +88,19 @@ function ajax_admin_display_form() {
 		.ajax-form-wrap { width: 100%; overflow: hidden; margin: 0 0 20px 0; }
 		.ajax-form { float: left; width: 400px; }
 		.examples  { float: left; width: 200px; }
+        .joke-box {
+            clear: both; 
+            display: flex;
+            padding: 40px;
+            border: 1px solid gray;
+            align-items: flex-start;
+            flex-direction: column;
+            max-width: 600px;
+            margin-top: 180px!important;
+        }
+        .joke-box p {font-size: 20px; line-height: 1.1; text-wrap: balance;}
+        #get-joke-btn {margin: 10px 0;}
+        #joke-response {font-size: 20px; line-height: 1.5; text-wrap: balance;}
 		pre {
 			width: 95%; overflow: auto; margin: 20px 0; padding: 20px;
 			color: #fff; background-color: #424242;
@@ -106,13 +119,6 @@ function ajax_admin_display_form() {
 			<input type="submit" value="Check Headers" class="button button-primary">
 		</form>
 
-        <!-- Joke Generator -->
-        <div class="joke-box" style="margin-top:20px;">
-            <p><strong>Feeling curious?</strong> Click below to get a random joke:</p>
-            <button type="button" class="button" id="get-joke-btn">Tell Me a Joke</button>
-            <div id="joke-response" style="margin-top:10px;"></div>
-        </div>
-
 		<div class="examples">
 			<p>Examples:</p>
 			<ul>
@@ -121,6 +127,13 @@ function ajax_admin_display_form() {
 				<li><code>https://api.github.com/</code></li>
 			</ul>
 		</div>
+
+        <!-- Joke Generator -->
+        <div class="joke-box" style="margin-top:20px;">
+            <p><strong>Feeling curious?</strong> Click below to get a random joke:</p>
+            <button type="button" class="button" id="get-joke-btn">Tell Me a Joke</button>
+            <div id="joke-response" style="margin-top:10px;"></div>
+        </div>
 
 	</div>
 
