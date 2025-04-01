@@ -1,5 +1,11 @@
 /* Admin Styles */
 
+/* SVG Display */
+.attachment .thumbnail img[src$=".svg"] {
+    width: 100% !important;
+    height: auto !important;
+}
+
 /* Tabs */
 .aaio-tab-content {
 	padding: 20px;

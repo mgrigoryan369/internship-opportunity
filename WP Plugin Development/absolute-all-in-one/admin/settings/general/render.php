@@ -19,7 +19,7 @@ function aaio_render_admin_bar_checkbox() {
             <span class="aaio-slider"></span>
         </label>
         <span style="margin-left: 10px;">
-            <?php esc_html_e( 'Hide admin bar when viewing website on front-end', 'absolute-all-in-one' ); ?>
+            <?php esc_html_e( 'Hide admin bar when viewing website on front-end', AAIO_TD ); ?>
         </span>
     </div>
     
@@ -41,7 +41,7 @@ function aaio_render_emoji_checkbox() {
             <span class="aaio-slider"></span>
         </label>
         <span style="margin-left: 10px;">
-            <?php esc_html_e( 'Remove emoji scripts/styles front-end & back-end', 'absolute-all-in-one' ); ?>
+            <?php esc_html_e( 'Remove emoji scripts/styles front-end & back-end', AAIO_TD ); ?>
         </span>
     </div>
 
@@ -63,7 +63,29 @@ function aaio_render_wp_version_checkbox() {
             <span class="aaio-slider"></span>
         </label>
         <span style="margin-left: 10px;">
-            <?php esc_html_e( 'Disable WordPress Version', 'absolute-all-in-one' ); ?>
+            <?php esc_html_e( 'Disable WordPress Version', AAIO_TD ); ?>
+        </span>
+    </div>
+
+    <?php
+
+}
+
+
+// Render SVG Upload checkbox field
+function aaio_render_svg_upload_checkbox() {
+
+    $option = get_option( 'aaio_enable_svg_uploads', false );
+
+    ?>
+
+    <div class="aaio-settings-row">
+        <label class="aaio-toggle">
+            <input type="checkbox" name="aaio_enable_svg_uploads" value="1" <?php checked( $option, 1 ); ?> />
+            <span class="aaio-slider"></span>
+        </label>
+        <span style="margin-left: 10px;">
+            <?php esc_html_e( 'Enable SVG Uploads', AAIO_TD ); ?>
         </span>
     </div>
 
