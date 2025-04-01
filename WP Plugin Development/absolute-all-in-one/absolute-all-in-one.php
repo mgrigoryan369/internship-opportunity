@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Plugin Name: Absolute All-In-One
  * Description: Modular plugin that includes admin tools, custom post types, shortcodes, Ajax examples, and more. 
  * Author: Martin Grigoryan
- * Version: 1.0.0
+ * Version: 1.2.1
  * Text Domain: absolute-all-in-one
  * Domain Path: /languages
  */
@@ -18,6 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  define( 'AAIO_VERSION', '1.0.0');
  define( 'AAIO_PLUGIN_DIR', plugin_dir_path( __FILE__ )); // for includes/require
  define( 'AAIO_PLUGIN_URL', plugin_dir_url( __FILE__ )); // for asset URLs (css/js)
+ define( 'AAIO_TD', 'absolute-all-in-one' ); // tired of typing the text domain
 
 // Load text domain for i18n
 function aaio_load_textdomain() {

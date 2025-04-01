@@ -14,7 +14,7 @@ function aaio_register_enabled_cpts() {
 	if ( get_option( 'aaio_enable_testimonials' ) ) {
 		require_once AAIO_PLUGIN_DIR . 'admin/cpt/testimonials/register.php';
         //require_once AAIO_PLUGIN_DIR . 'admin/cpt/testimonials/taxonomy.php';
-        //require_once AAIO_PLUGIN_DIR . 'admin/cpt/testimonials/meta.php';
+        require_once AAIO_PLUGIN_DIR . 'admin/cpt/testimonials/meta.php';
 	}
 
 	// === Services ===
