@@ -24,11 +24,17 @@ function aaio_load_textdomain() {
 	load_plugin_textdomain( 'absolute-all-in-one', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 
-// Load admin functionality
+// Load admin menu logic
 if ( is_admin() ) {
 	require_once AAIO_PLUGIN_DIR . 'admin/admin-menu.php';
 }
 
+// Load logic that runs on both frontend and backend
+require_once AAIO_PLUGIN_DIR . 'admin/settings/general-settings.php';
+
+
 // === Hooked Actions ===
 
 add_action( 'plugins_loaded', 'aaio_load_textdomain' ); // plugins_loaded to make sure all translations are ready
+
+//error_log( 'WP_DEBUG is working and writing to the log.' );
