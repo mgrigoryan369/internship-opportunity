@@ -29,8 +29,8 @@ if ( is_admin() ) {
 	require_once AAIO_PLUGIN_DIR . 'admin/admin-menu.php';
 }
 
-// Load logic that runs on both frontend and backend
-require_once AAIO_PLUGIN_DIR . 'admin/settings/general-settings.php';
+// === Load Settings (Both Admin and Front-End Logic) ===
+require_once AAIO_PLUGIN_DIR . 'admin/settings/settings-loader.php';
 
 
 // === Hooked Actions ===
