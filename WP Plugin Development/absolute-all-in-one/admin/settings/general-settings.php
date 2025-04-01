@@ -11,6 +11,7 @@ add_action( 'admin_init', 'aaio_register_general_settings' ); // Register Settin
 add_action( 'aaio_tab_general', 'aaio_render_general_tab_content' ); // Output tab content
 add_action( 'init', 'aaio_apply_admin_bar_setting' ); // Apply admin bar logic 
 add_action( 'init', 'aaio_apply_emoji_setting' ); // Apply Emoji removal logic
+add_action( 'init', 'aaio_disable_wp_version' ); // Apply WP metadata removal logic
 
 
 // Render content in General Tab
@@ -37,6 +38,7 @@ function aaio_register_general_settings() {
     // Settings
     register_setting( 'aaio_general_settings_group', 'aaio_disable_admin_bar' );
     register_setting( 'aaio_general_settings_group', 'aaio_disable_emojis' );
+    register_setting( 'aaio_general_settings_group', 'aaio_disable_wp_version' );
 
 
     add_settings_section (
@@ -58,6 +60,14 @@ function aaio_register_general_settings() {
         'aaio_disable_emojis',
         __( 'Disable Emoji Support', 'absolute-all-in-one' ),
         'aaio_render_emoji_checkbox',
+        'aaio_general_settings_page',
+        'aaio_general_section'
+    );
+
+    add_settings_field (
+        'aaio_disable_wp_version',
+        __( 'Disable WP Version', 'absolute-all-in-one' ),
+        'aaio_render_wp_version_checkbox',
         'aaio_general_settings_page',
         'aaio_general_section'
     );
@@ -107,6 +117,27 @@ function aaio_render_emoji_checkbox() {
 
 }
 
+// Render Disable WP Version checkbox field
+function aaio_render_wp_version_checkbox() {
+
+    $option = get_option( 'aaio_disable_wp_version', false );
+
+    ?>
+
+    <div class="aaio-settings-row">
+        <label class="aaio-toggle">
+            <input type="checkbox" name="aaio_disable_wp_version" class="aaio-toggle" value="1" <?php checked( $option, 1 ); ?> />
+            <span class="aaio-slider"></span>
+        </label>
+        <span style="margin-left: 10px;">
+            <?php esc_html_e( 'Disable WordPress Version', 'absolute-all-in-one' ); ?>
+        </span>
+    </div>
+
+    <?php
+
+}
+
 
 // === Logic for Settings ===
 
@@ -116,13 +147,14 @@ function aaio_apply_admin_bar_setting() {
     // Disable front-end admin bar for Everyone
     if ( ! is_admin() && get_option( 'aaio_disable_admin_bar' ) ){
         add_filter( 'show_admin_bar', '__return_false', 1000 );
-        error_log( 'AAIO: Admin bar disabled on front-end' );
+        // error_log( 'AAIO: Admin bar disabled on front-end' );
     }
 
 }
 
 // Remove Emojis from everywhere
 function aaio_apply_emoji_setting() {
+   
     if ( get_option( 'aaio_disable_emojis') ){
 
         // Front-end
@@ -142,4 +174,15 @@ function aaio_apply_emoji_setting() {
         });
 
     }
+
+}
+
+
+// Disable WP Version from website metadata
+function aaio_disable_wp_version() {
+    
+    if ( get_option( 'aaio_disable_wp_version' ) ) {
+        remove_action( 'wp_head', 'wp_generator' );
+    }
+
 }

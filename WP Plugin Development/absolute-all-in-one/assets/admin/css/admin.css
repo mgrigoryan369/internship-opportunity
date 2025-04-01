@@ -8,6 +8,10 @@
 	border-top: none;
 }
 
+.aaio-tab-content .form-table th {
+    text-wrap: balance;
+}
+
 /* Custom Toggles */
 .aaio-toggle {
 	position: relative;
