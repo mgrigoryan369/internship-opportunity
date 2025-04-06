@@ -1,17 +1,22 @@
 <?php // Logic: General Settings | applies logic
 
+// TODO:
+//  Move each function to its own file for
+//  easier future maintenance and additions 
+
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 // === HOOKS ===
+add_action( 'admin_init', 'aaio_handle_general_settings_save' ); // Admin notices
 add_action( 'init', 'aaio_apply_admin_bar_setting' ); // Apply admin bar logic 
 add_action( 'init', 'aaio_apply_emoji_setting' ); // Apply Emoji removal logic
 add_action( 'init', 'aaio_disable_wp_version' ); // Apply WP metadata removal logic
 
 add_filter( 'upload_mimes', 'aaio_enable_svg_uploads' ); // Add SVG to mimes
-add_filter( 'wp_check_filetype_and_ext', 'aaio_check_svg_file', 10, 4 ); // Additonal basic check, safety net
+add_filter( 'wp_check_filetype_and_ext', 'aaio_check_svg_file', 10, 4 ); // Additional basic check, safety net
 add_filter( 'wp_generate_attachment_metadata', 'aaio_skip_svg_sizes', 10, 2 ); // Skip size generation 
 
 
@@ -108,4 +113,21 @@ function aaio_skip_svg_sizes( $metadata, $attachment_id ) {
 
 	return $metadata;
 
+}
+
+// Admin notice for General Tab
+function aaio_handle_general_settings_save() {
+	if ( 
+        isset( $_GET['page'], $_GET['settings-updated'] ) &&
+		$_GET['page'] === 'aaio' &&
+		$_GET['settings-updated'] === 'true' 
+    ) {
+
+        // Treat no tab OR tab=general as "general"
+        $tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'general';
+        
+        if ( $tab === 'general' ) {
+            aaio_redirect_with_notice( 'general', 'settings_saved' );
+        }
+	}
 }

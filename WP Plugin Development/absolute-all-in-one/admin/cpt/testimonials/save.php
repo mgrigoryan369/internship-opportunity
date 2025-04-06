@@ -43,4 +43,7 @@ function aaio_save_testimonial_meta( $post_id ) {
         update_post_meta( $post_id, '_aaio_testimonial_rating', $rating );
     }
 
+    // Clear testimonial shortcode cache
+    delete_transient( 'aaio_testimonials_cache' );
+
 }

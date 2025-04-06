@@ -18,8 +18,9 @@ require_once AAIO_PLUGIN_DIR . 'admin/settings/features/logic.php';
 require_once AAIO_PLUGIN_DIR . 'admin/settings/features/controller.php';
 
 // === Help Tab  ===
-// require_once AAIO_PLUGIN_DIR . 'admin/settings/help/controller.php';
-
+require_once AAIO_PLUGIN_DIR . 'admin/settings/help/controller.php';
+require_once AAIO_PLUGIN_DIR . 'admin/settings/help/render.php';
+require_once AAIO_PLUGIN_DIR . 'admin/settings/help/logic.php';
 
 
 
