@@ -8,8 +8,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Load the CSS/JS only if testimonials is enabled
 function aaio_enqueue_testimonials_assets() {
     if ( ! get_option( 'aaio_enable_testimonials' ) ) {
+        error_log('❌ Testimonials disabled, aborting asset enqueue');
         return;
     }
+
+    error_log('Option value: ' . var_export(get_option('aaio_enable_testimonials'), true));
 
     // Swiper core CSS & JS
     wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], '11.0.0' );
@@ -18,4 +21,6 @@ function aaio_enqueue_testimonials_assets() {
     // Our own CSS/JS for additonal control
     //wp_enqueue_style( 'aaio-testimonials-style', AAIO_PLUGIN_URL . 'admin/settings/features/testimonials/assets/testimonials.css', [], AAIO_VERSION );
     wp_enqueue_script( 'aaio-testimonials-init', AAIO_PLUGIN_URL . 'admin/settings/features/testimonials/assets/testimonials.js', ['swiper-js'], AAIO_VERSION, true );
+
+    error_log('✅ Swiper assets enqueued!');
 }

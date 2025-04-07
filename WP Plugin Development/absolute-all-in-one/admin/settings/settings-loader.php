@@ -17,6 +17,9 @@ require_once AAIO_PLUGIN_DIR . 'admin/settings/features/render.php';
 require_once AAIO_PLUGIN_DIR . 'admin/settings/features/logic.php';
 require_once AAIO_PLUGIN_DIR . 'admin/settings/features/controller.php';
 
+// === Features: Testimonials (conditionally loads if enabled)
+require_once AAIO_PLUGIN_DIR . 'admin/settings/features/testimonials/loader.php';
+
 // === Help Tab  ===
 require_once AAIO_PLUGIN_DIR . 'admin/settings/help/controller.php';
 require_once AAIO_PLUGIN_DIR . 'admin/settings/help/render.php';

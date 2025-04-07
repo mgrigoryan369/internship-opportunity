@@ -95,15 +95,30 @@ add_action( 'admin_notices', function () {
 } );
 
 
-// === Transient Render Helpers ===
+// === Transient Helpers ===
 
-// Clear Transient Section
+// Transient Render Section
 function aaio_render_cache_section( $slug, $label ) {
-	$transient_key = "aaio_{$slug}_cache";
-	$is_cached     = get_transient( $transient_key );
-	$nonce_action  = "aaio_clear_{$slug}_transients_action";
-	$nonce_name    = "aaio_clear_{$slug}_transients_nonce";
-	$submit_name   = "aaio_clear_{$slug}_transients";
+	$transient_key = "aaio_{$slug}_cache"; // Static
+	$tracked_keys = get_option( "aaio_{$slug}_cache_keys", [] ); // Dynamic keys
+	$is_cached = false;
+
+	// Check dynamic keys first
+	if ( is_array( $tracked_keys ) && ! empty( $tracked_keys ) ) {
+		foreach ( $tracked_keys as $key ) {
+			if ( get_transient( $key ) !== false ) {
+				$is_cached = true;
+				break;
+			}
+		}
+	} else {
+		// Fallback to check static key
+		$is_cached = ( get_transient( $transient_key ) !== false );
+	}
+
+	$nonce_action = "aaio_clear_{$slug}_transients_action";
+	$nonce_name = "aaio_clear_{$slug}_transients_nonce";
+	$submit_name = "aaio_clear_{$slug}_transients";
 
 	echo '<div style="margin-bottom: 20px;">';
 	echo '<strong>' . esc_html( $label ) . ' ' . __( 'Cache Status:', AAIO_TD ) . '</strong> ';
@@ -115,4 +130,33 @@ function aaio_render_cache_section( $slug, $label ) {
 	wp_nonce_field( $nonce_action, $nonce_name );
 	echo '<input type="submit" class="button button-secondary" name="' . esc_attr( $submit_name ) . '" value="' . esc_attr__( "Clear {$label} Cache", AAIO_TD ) . '">';
 	echo '</form></div>';
+}
+
+
+// Track dynamic transient cache keys for a given type
+// Example: aaio_track_dynamic_transient( 'testimonials', $cache_key );
+function aaio_track_dynamic_transient( $type, $cache_key ) {
+	$option_key = "aaio_{$type}_cache_keys";
+	$keys = get_option( $option_key, [] );
+
+	if ( ! in_array( $cache_key, $keys, true ) ) {
+		$keys[] = $cache_key;
+		update_option( $option_key, $keys ); // Update the tracker option
+	}
+}
+
+
+// Delete all dynamic cache keys for a given type
+// Example: aaio_delete_dynamic_transients( 'testimonials' );
+function aaio_delete_dynamic_transients( $type ) {
+	$option_key = "aaio_{$type}_cache_keys";
+	$keys = get_option( $option_key, [] );
+
+	if ( is_array( $keys ) ) {
+		foreach ( $keys as $transient ) {
+			delete_transient( $transient );
+		}
+	}
+
+	delete_option( $option_key ); // Clear the tracker option
 }

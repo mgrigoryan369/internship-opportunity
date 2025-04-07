@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // === HOOKS ===
 add_action( 'admin_init', 'aaio_handle_cache_clear_requests' );
+add_action( 'admin_init', 'aaio_handle_reset_general_options' );
 
 
 // Clear Trasient Cache Logic
@@ -19,17 +20,17 @@ function aaio_handle_cache_clear_requests() {
 		$submit_name  = "aaio_clear_{$type}_transients";
 
 		if ( isset( $_POST[$submit_name] ) && check_admin_referer( $nonce_action, $nonce_name ) ) {
-			delete_transient( "aaio_{$type}_cache" );
-			aaio_redirect_with_notice( 'help', "transients_cleared_{$type}" );
+			aaio_delete_dynamic_transients( $type ); // Transient handling within helpers.php
+			aaio_redirect_with_notice( 'help', "transients_cleared_{$type}" ); // Notice handling within helpers.php 
 		}
 	}
 
     // Clear All
 	if ( isset( $_POST['aaio_clear_all_transients'] ) && check_admin_referer( 'aaio_clear_all_transients_action', 'aaio_clear_all_transients_nonce' ) ) {
 		foreach ( $types as $type ) {
-			delete_transient( "aaio_{$type}_cache" );
+			aaio_delete_dynamic_transients( $type ); //handle within helpers.php
 		}
-		aaio_redirect_with_notice( 'help', 'transients_cleared_all' );
+		aaio_redirect_with_notice( 'help', 'transients_cleared_all' ); // Notice handling within helpers.php 
 	}
 }
 
@@ -49,4 +50,3 @@ function aaio_handle_reset_general_options() {
 		aaio_redirect_with_notice( 'help', 'options_reset' );
 	}
 }
-add_action( 'admin_init', 'aaio_handle_reset_general_options' );
